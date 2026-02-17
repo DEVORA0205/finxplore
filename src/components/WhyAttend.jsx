@@ -1,63 +1,117 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { CheckCircle } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Plus, Minus, ArrowUpRight } from 'lucide-react';
+
+const AccordionItem = ({ item, isOpen, onClick, index }) => {
+    return (
+        <div className="border-b border-white/10 last:border-0">
+            <button
+                onClick={onClick}
+                className="w-full flex items-center justify-between py-10 group text-left focus:outline-none"
+            >
+                <div className="flex items-baseline gap-8">
+                    <span className="font-mono text-finance-gold opacity-60 text-lg">0{index + 1}</span>
+                    <h3 className={`text-3xl md:text-5xl font-display transition-colors duration-300 ${isOpen ? 'text-white' : 'text-gray-400 group-hover:text-white'}`}>
+                        {item.title}
+                    </h3>
+                </div>
+                <div className={`p-3 rounded-full border transition-all duration-300 ${isOpen ? 'bg-white text-finance-navy border-white' : 'border-white/20 text-white group-hover:border-finance-gold group-hover:text-finance-gold'}`}>
+                    {isOpen ? <Minus size={24} /> : <Plus size={24} />}
+                </div>
+            </button>
+
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.4, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                    >
+                        <div className="pb-10 pl-0 md:pl-14 flex flex-col md:flex-row gap-8 items-start">
+                            <div className="md:w-1/2">
+                                <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                                    {item.desc}
+                                </p>
+                                <ul className="space-y-2 mb-6">
+                                    {item.points.map((point, i) => (
+                                        <li key={i} className="flex items-center gap-3 text-gray-400 text-sm">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-finance-emerald"></div>
+                                            {point}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <div className="md:w-1/2 w-full h-64 md:h-80 rounded-2xl overflow-hidden relative">
+                                <img
+                                    src={item.image}
+                                    alt={item.title}
+                                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
+                                />
+                                <div className="absolute inset-0 bg-finance-navy/20 mix-blend-multiply"></div>
+                            </div>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </div>
+    );
+};
 
 const WhyAttend = () => {
+    const [openIndex, setOpenIndex] = useState(0);
+
     const benefits = [
-        "Gain clarity on career paths like CA, CS, MBA, and CFA.",
-        "Network with industry leaders and alumni.",
-        "Participate in case study competitions with cash prizes.",
-        "Get exclusive access to internship opportunities.",
-        "Receive a certificate of participation.",
-        "Understand the future of FinTech and Digital Banking."
+        {
+            title: "Career Clarity",
+            desc: "Confused between CA, CFA, or MBA? Get a definitive roadmap. We break down the pros, cons, and salary trajectories of each path so you can choose with conviction.",
+            image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2670&auto=format&fit=crop",
+            points: ["Expert comparative analysis", "1-on-1 Q&A sessions", "Salary trajectory maps"]
+        },
+        {
+            title: "Elite Networking",
+            desc: "Your network is your net worth. Rub shoulders with CFOs, Investment Bankers, and successful Alumni who were once in your shoes.",
+            image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=2670&auto=format&fit=crop",
+            points: ["Coffee mixer with speakers", "LinkedIn connection opportunities", "Mentorship pairing"]
+        },
+        {
+            title: "Real-World Edge",
+            desc: "Theory is fine, but practice pays. Participate in high-stakes case study wars and simulations that mimic real boardroom challenges.",
+            image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=2670&auto=format&fit=crop",
+            points: ["Live Case Study War", "Cash Prizes Pool: ₹50,000", "Certificate of Merit"]
+        },
+        {
+            title: "Internship Access",
+            desc: "Skip the cold emails. Top performing delegates get fast-tracked into interview rounds with our partner firms and sponsors.",
+            image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2669&auto=format&fit=crop",
+            points: ["Resume drop for sponsors", "On-spot interview shortlist", "Summer internship roles"]
+        }
     ];
 
     return (
         <section className="py-24 bg-finance-navy relative">
             <div className="container mx-auto px-6">
-                <div className="flex flex-col md:flex-row items-center gap-16">
-                    {/* Left: Content */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        className="w-full md:w-1/2"
-                    >
-                        <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">Why <span className="text-finance-emerald">Attend?</span></h2>
-                        <p className="text-gray-300 text-lg mb-8 leading-relaxed">
-                            FinExplorer isn't just a seminar; it's a launchpad for your career. Whether you're confused about your next step or ready to specialize, this event offers something for everyone.
-                        </p>
+                <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-6">
+                    <div>
+                        <h4 className="text-finance-gold font-bold tracking-widest uppercase text-sm mb-4">The ROI</h4>
+                        <h2 className="text-4xl md:text-5xl font-display font-medium text-white">
+                            Invest one day.<br />
+                            <span className="text-gray-500">Transform your</span> <span className="text-finance-emerald">decade.</span>
+                        </h2>
+                    </div>
+                </div>
 
-                        <div className="grid gap-4">
-                            {benefits.map((benefit, index) => (
-                                <div key={index} className="flex items-start gap-3">
-                                    <CheckCircle className="text-finance-gold w-6 h-6 shrink-0 mt-0.5" />
-                                    <span className="text-gray-200">{benefit}</span>
-                                </div>
-                            ))}
-                        </div>
-                    </motion.div>
-
-                    {/* Right: Visual */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        className="w-full md:w-1/2 relative"
-                    >
-                        <div className="relative z-10 grid grid-cols-2 gap-4">
-                            <div className="space-y-4 translate-y-8">
-                                <div className="h-48 rounded-2xl bg-gradient-to-br from-finance-gold to-yellow-600 opacity-20 animate-pulse"></div>
-                                <div className="h-64 rounded-2xl bg-finance-lightNavy border border-white/10 glass-card"></div>
-                            </div>
-                            <div className="space-y-4">
-                                <div className="h-64 rounded-2xl bg-finance-emerald/20 border border-finance-emerald/10 glass-card"></div>
-                                <div className="h-48 rounded-2xl bg-gradient-to-tr from-blue-600 to-finance-navy opacity-40"></div>
-                            </div>
-                        </div>
-                        {/* Background Blob */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-finance-gold/20 blur-[100px] -z-10 rounded-full"></div>
-                    </motion.div>
+                <div className="max-w-5xl mx-auto">
+                    {benefits.map((item, index) => (
+                        <AccordionItem
+                            key={index}
+                            item={item}
+                            index={index}
+                            isOpen={openIndex === index}
+                            onClick={() => setOpenIndex(index === openIndex ? null : index)}
+                        />
+                    ))}
                 </div>
             </div>
         </section>
