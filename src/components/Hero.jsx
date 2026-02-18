@@ -33,15 +33,24 @@ const Hero = () => {
                 <div className="absolute top-[-50%] left-[-20%] w-[140%] h-[200%] bg-gradient-to-br from-finance-navy via-[#050b14] to-finance-navy z-0"></div>
 
                 {/* Organic Orbs */}
+                {/* Organic Orbs - Optimized for Mobile */}
                 <motion.div
-                    animate={{ rotate: 360, scale: [1, 1.1, 1], x: [0, 30, 0] }}
+                    animate={{
+                        rotate: 360,
+                        scale: [1, 1.1, 1],
+                        x: [0, 30, 0]
+                    }}
                     transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                    className="absolute top-[-10%] left-[-10%] w-[70vw] h-[70vw] bg-finance-gold/5 rounded-full blur-[100px] mix-blend-screen opacity-60"
+                    className="absolute top-[-10%] left-[-10%] w-[70vw] h-[70vw] bg-finance-gold/5 rounded-full blur-[60px] md:blur-[100px] mix-blend-screen opacity-40 md:opacity-60 will-change-transform"
                 />
                 <motion.div
-                    animate={{ rotate: -360, scale: [1, 1.3, 1], y: [0, -50, 0] }}
+                    animate={{
+                        rotate: -360,
+                        scale: [1, 1.3, 1],
+                        y: [0, -50, 0]
+                    }}
                     transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                    className="absolute bottom-[-20%] right-[-10%] w-[60vw] h-[60vw] bg-finance-emerald/5 rounded-full blur-[120px] mix-blend-screen opacity-50"
+                    className="absolute bottom-[-20%] right-[-10%] w-[60vw] h-[60vw] bg-finance-emerald/5 rounded-full blur-[80px] md:blur-[120px] mix-blend-screen opacity-30 md:opacity-50 hidden md:block will-change-transform"
                 />
 
                 {/* Noise Texture for Film Grain Feel */}

@@ -55,7 +55,8 @@ const Sponsors = () => {
             </div>
 
             {/* Scrolling Row 2 (Reverse) */}
-            <div className="relative flex overflow-x-hidden group mt-12">
+            {/* Scrolling Row 2 (Reverse) - Hidden on Mobile for Performance */}
+            <div className="relative overflow-x-hidden group mt-12 hidden md:flex">
                 <div className="flex animate-marqueeReverse whitespace-nowrap py-4">
                     {sponsors.slice().reverse().map((sponsor, index) => (
                         <LogoItem key={index} name={sponsor} />
@@ -93,15 +94,19 @@ const Sponsors = () => {
                 }
                 .animate-marquee {
                     animation: marquee 100s linear infinite;
+                    will-change: transform;
                 }
                 .animate-marquee2 {
                     animation: marquee2 100s linear infinite;
+                    will-change: transform;
                 }
                 .animate-marqueeReverse {
                     animation: marqueeReverse 100s linear infinite;
+                    will-change: transform;
                 }
                  .animate-marqueeReverse2 {
                     animation: marqueeReverse2 100s linear infinite;
+                    will-change: transform;
                 }
             `}</style>
         </section>
