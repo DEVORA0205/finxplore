@@ -31,28 +31,33 @@ const Contact = () => {
 
                         <div className="space-y-6">
                             {/* Location Card */}
-                            <div className="group bg-white/5 hover:bg-white/10 border border-white/10 hover:border-finance-gold/50 rounded-xl p-6 transition-all duration-300 cursor-default">
+                            <a
+                                href="https://www.google.com/maps/search/?api=1&query=HL+College+of+Commerce+Navrangpura+Ahmedabad+Gujarat+380009"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group bg-white/5 hover:bg-white/10 border border-white/10 hover:border-finance-gold/50 rounded-xl p-6 transition-all duration-300 cursor-pointer block"
+                            >
                                 <div className="flex items-start gap-4">
                                     <div className="p-3 bg-finance-lightNavy rounded-lg text-finance-gold group-hover:scale-110 transition-transform">
                                         <MapPin size={24} />
                                     </div>
                                     <div>
                                         <h4 className="text-white font-bold text-lg mb-1">Visit Us</h4>
-                                        <p className="text-gray-400 text-sm leading-relaxed">HL College of Commerce,<br />Navrangpura, Ahmedabad, Gujarat 380009</p>
+                                        <p className="text-gray-400 text-sm leading-relaxed group-hover:text-white transition-colors">HL College of Commerce,<br />Navrangpura, Ahmedabad, Gujarat 380009</p>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
 
                             {/* Contact Grid */}
                             <div className="grid md:grid-cols-2 gap-6">
-                                <a href="mailto:info@finexplorer.com" className="group bg-white/5 hover:bg-white/10 border border-white/10 hover:border-finance-gold/50 rounded-xl p-6 transition-all duration-300">
+                                <a href="mailto:info@finxplore.com" className="group bg-white/5 hover:bg-white/10 border border-white/10 hover:border-finance-gold/50 rounded-xl p-6 transition-all duration-300">
                                     <div className="flex items-center gap-4 mb-3">
                                         <div className="p-2 bg-finance-lightNavy rounded-lg text-blue-400 group-hover:scale-110 transition-transform">
                                             <Mail size={20} />
                                         </div>
                                         <h4 className="text-white font-bold">Email</h4>
                                     </div>
-                                    <p className="text-gray-400 text-sm group-hover:text-white transition-colors">info@finexplorer.com</p>
+                                    <p className="text-gray-400 text-sm group-hover:text-white transition-colors">info@finxplore.com</p>
                                 </a>
 
                                 <a href="tel:+919876543210" className="group bg-white/5 hover:bg-white/10 border border-white/10 hover:border-finance-gold/50 rounded-xl p-6 transition-all duration-300">

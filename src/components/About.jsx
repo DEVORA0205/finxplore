@@ -55,7 +55,7 @@ const About = () => {
                                     Beyond <br /> the <span className="italic text-finance-gold font-serif">Textbook.</span>
                                 </h2>
                                 <p className="text-xl text-gray-400 leading-relaxed mb-12 max-w-md font-light">
-                                    FinExplorer isn't just an event; it's a paradigm shift. We dismantle the traditional academic approach and rebuild it with real-world relevance.
+                                    Finxplore isn't just an event; it's a paradigm shift. We dismantle the traditional academic approach and rebuild it with real-world relevance.
                                 </p>
 
                                 <a href="#register" className="inline-flex items-center gap-4 text-white group">

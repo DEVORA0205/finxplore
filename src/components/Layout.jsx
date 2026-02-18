@@ -29,8 +29,8 @@ const Layout = ({ children }) => {
             <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'glass-nav py-4' : 'bg-transparent py-6'}`}>
                 <div className="container mx-auto px-6 flex justify-between items-center">
                     <Link to="/" className="flex items-center gap-2">
-                        <img src="/logo.png" alt="FinExplorer" className="h-10 w-auto" />
-                        <span className="font-display font-bold text-2xl tracking-tight">FinExplorer</span>
+                        <img src="/logo.png" alt="Finxplore" className="h-10 w-auto" />
+                        <span className="font-display font-bold text-2xl tracking-tight">Finxplore</span>
                     </Link>
 
                     {/* Desktop Nav */}

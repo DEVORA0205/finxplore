@@ -75,7 +75,7 @@ const Hero = () => {
                     <h1 className="text-5xl md:text-7xl lg:text-9xl font-display font-medium text-white tracking-tight leading-[1.1]">
                         The <span className="font-serif italic text-finance-gold opacity-90">Future</span> of <br />
                         <span className="relative inline-block">
-                            Finance
+                            Finxplore
                             {/* Hand-drawn underline SVG */}
                             <svg className="absolute -bottom-2 md:-bottom-4 left-0 w-full h-3 md:h-6 text-finance-emerald opacity-80" viewBox="0 0 200 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M2.00025 7.00001C30.2974 3.01899 104.288 -2.48101 198.001 2.00001" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />

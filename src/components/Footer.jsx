@@ -15,13 +15,20 @@ const Footer = () => {
                         <div className="w-10 h-10 bg-finance-gold rounded-xl flex items-center justify-center text-finance-navy font-bold text-xl group-hover:scale-110 transition-transform">
                             F
                         </div>
-                        <span className="font-display font-bold text-3xl text-white tracking-tight">FinExplorer 2026</span>
+                        <span className="font-display font-bold text-3xl text-white tracking-tight">Finxplore 2026</span>
                     </Link>
 
                     <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 text-gray-400 text-sm mt-4">
                         <span className="flex items-center gap-2"><Calendar size={16} className="text-finance-gold" /> March 14-15, 2026</span>
                         <span className="hidden md:block w-1.5 h-1.5 rounded-full bg-white/10"></span>
-                        <span className="flex items-center gap-2"><MapPin size={16} className="text-finance-emerald" /> HL College of Commerce, Ahmedabad</span>
+                        <a
+                            href="https://www.google.com/maps/search/?api=1&query=HL+College+of+Commerce+Ahmedabad"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 hover:text-finance-emerald transition-colors"
+                        >
+                            <MapPin size={16} className="text-finance-emerald" /> HL College of Commerce, Ahmedabad
+                        </a>
                     </div>
                 </div>
 
@@ -40,7 +47,7 @@ const Footer = () => {
                         Organized by HL College of Commerce
                     </p>
                     <p className="text-gray-600 text-xs">
-                        © {new Date().getFullYear()} FinExplorer. All rights reserved.
+                        © {new Date().getFullYear()} Finxplore. All rights reserved.
                     </p>
                 </div>
             </div>
