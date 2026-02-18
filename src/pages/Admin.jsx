@@ -64,33 +64,35 @@ const Admin = () => {
     return (
         <div className="min-h-screen bg-finance-navy p-6 pt-24 text-white">
             <div className="container mx-auto">
-                <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
-                    <div className="flex items-center gap-4">
-                        <h1 className="text-3xl font-bold font-display text-finance-gold">Admin Dashboard</h1>
-                        <span className="px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full text-xs font-mono text-green-400">
-                            SECURE SESSION
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-6">
+                    <div className="flex items-center gap-4 w-full md:w-auto justify-between md:justify-start">
+                        <h1 className="text-2xl md:text-3xl font-bold font-display text-finance-gold">Admin Dashboard</h1>
+                        <span className="px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full text-[10px] md:text-xs font-mono text-green-400">
+                            SECURE
                         </span>
                     </div>
 
-                    <div className="flex gap-4">
-                        <div className="relative">
+                    <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+                        <div className="relative w-full sm:w-auto">
                             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
                             <input
                                 type="text"
                                 placeholder="Search..."
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
-                                className="pl-10 pr-4 py-2 bg-finance-lightNavy border border-white/10 rounded-lg text-white focus:border-finance-gold focus:outline-none"
+                                className="w-full sm:w-64 pl-10 pr-4 py-2 bg-finance-lightNavy border border-white/10 rounded-lg text-white focus:border-finance-gold focus:outline-none"
                             />
                         </div>
 
-                        <button onClick={downloadCSV} className="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 px-4 py-2 rounded-lg font-bold transition-colors text-sm">
-                            <Download size={18} /> Export CSV
-                        </button>
+                        <div className="flex gap-2 w-full sm:w-auto">
+                            <button onClick={downloadCSV} className="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 px-4 py-2 rounded-lg font-bold transition-colors text-sm whitespace-nowrap">
+                                <Download size={18} /> <span className="sm:hidden lg:inline">Export CSV</span><span className="hidden sm:inline lg:hidden">Export</span>
+                            </button>
 
-                        <button onClick={handleLogout} className="flex items-center gap-2 bg-red-500/10 hover:bg-red-500/20 text-red-500 border border-red-500/50 px-4 py-2 rounded-lg font-bold transition-colors text-sm">
-                            <LogOut size={18} /> Logout
-                        </button>
+                            <button onClick={handleLogout} className="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-red-500/10 hover:bg-red-500/20 text-red-500 border border-red-500/50 px-4 py-2 rounded-lg font-bold transition-colors text-sm">
+                                <LogOut size={18} /> Logout
+                            </button>
+                        </div>
                     </div>
                 </div>
 
