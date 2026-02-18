@@ -1,52 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { Download, Users, User, Briefcase, Search, LogOut, Lock, AlertCircle } from 'lucide-react';
+import { Download, Users, User, Briefcase, Search, LogOut } from 'lucide-react';
 import { supabase } from '../supabaseClient';
+import { useNavigate } from 'react-router-dom';
 
 const Admin = () => {
-    // Auth State
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [userRole, setUserRole] = useState(null); // 'admin' | 'viewer'
-
-    // Login Form State
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [loginError, setLoginError] = useState('');
-
     const [activeTab, setActiveTab] = useState('entry');
     const [searchTerm, setSearchTerm] = useState('');
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
-    // Hardcoded Credentials
-    const CREDENTIALS = {
-        'admin': { pass: 'finxplore2026', role: 'admin' },
-        'viewer': { pass: 'guest123', role: 'viewer' }
-    };
-
-    const handleLogin = (e) => {
-        e.preventDefault();
-        const user = CREDENTIALS[username];
-        if (user && user.pass === password) {
-            setIsAuthenticated(true);
-            setUserRole(user.role);
-            setLoginError('');
-            fetchData(activeTab); // Fetch data on login
-        } else {
-            setLoginError('Invalid credentials');
-        }
-    };
-
-    const handleLogout = () => {
-        setIsAuthenticated(false);
-        setUserRole(null);
-        setUsername('');
-        setPassword('');
-        setData([]);
+    const handleLogout = async () => {
+        await supabase.auth.signOut();
+        navigate('/login');
     };
 
     // Fetch Data from Supabase
     const fetchData = async (tab) => {
-        if (!isAuthenticated) return;
         setLoading(true);
         let tableName = '';
         if (tab === 'entry') tableName = 'registrations_entry';
@@ -67,10 +37,8 @@ const Admin = () => {
     };
 
     useEffect(() => {
-        if (isAuthenticated) {
-            fetchData(activeTab);
-        }
-    }, [activeTab, isAuthenticated]);
+        fetchData(activeTab);
+    }, [activeTab]);
 
     const downloadCSV = () => {
         if (data.length === 0) return;
@@ -93,66 +61,14 @@ const Admin = () => {
         )
     );
 
-    if (!isAuthenticated) {
-        return (
-            <div className="min-h-screen bg-finance-navy flex items-center justify-center p-6">
-                <div className="bg-finance-lightNavy/50 backdrop-blur-md border border-white/10 p-8 rounded-2xl w-full max-w-md shadow-2xl">
-                    <div className="text-center mb-8">
-                        <div className="w-16 h-16 bg-finance-gold/10 rounded-full flex items-center justify-center mx-auto mb-4 text-finance-gold">
-                            <Lock size={32} />
-                        </div>
-                        <h2 className="text-2xl font-bold text-white mb-2">Admin Access</h2>
-                        <p className="text-gray-400 text-sm">Finxplore 2026 Dashboard</p>
-                    </div>
-
-                    <form onSubmit={handleLogin} className="space-y-4">
-                        <div>
-                            <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">User ID</label>
-                            <input
-                                type="text"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
-                                className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-finance-gold focus:outline-none transition-colors"
-                                placeholder="Enter User ID"
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Password</label>
-                            <input
-                                type="password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-finance-gold focus:outline-none transition-colors"
-                                placeholder="Enter Password"
-                            />
-                        </div>
-
-                        {loginError && (
-                            <div className="flex items-center gap-2 text-red-400 text-sm bg-red-500/10 p-3 rounded-lg border border-red-500/20">
-                                <AlertCircle size={16} /> {loginError}
-                            </div>
-                        )}
-
-                        <button
-                            type="submit"
-                            className="w-full bg-finance-gold text-finance-navy font-bold py-3 rounded-lg hover:bg-white transition-colors mt-2"
-                        >
-                            Access Dashboard
-                        </button>
-                    </form>
-                </div>
-            </div>
-        );
-    }
-
     return (
         <div className="min-h-screen bg-finance-navy p-6 pt-24 text-white">
             <div className="container mx-auto">
                 <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
                     <div className="flex items-center gap-4">
                         <h1 className="text-3xl font-bold font-display text-finance-gold">Admin Dashboard</h1>
-                        <span className="px-3 py-1 bg-white/10 rounded-full text-xs font-mono text-gray-300">
-                            {userRole.toUpperCase()}
+                        <span className="px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full text-xs font-mono text-green-400">
+                            SECURE SESSION
                         </span>
                     </div>
 
@@ -168,11 +84,9 @@ const Admin = () => {
                             />
                         </div>
 
-                        {userRole === 'admin' && (
-                            <button onClick={downloadCSV} className="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 px-4 py-2 rounded-lg font-bold transition-colors text-sm">
-                                <Download size={18} /> Export CSV
-                            </button>
-                        )}
+                        <button onClick={downloadCSV} className="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 px-4 py-2 rounded-lg font-bold transition-colors text-sm">
+                            <Download size={18} /> Export CSV
+                        </button>
 
                         <button onClick={handleLogout} className="flex items-center gap-2 bg-red-500/10 hover:bg-red-500/20 text-red-500 border border-red-500/50 px-4 py-2 rounded-lg font-bold transition-colors text-sm">
                             <LogOut size={18} /> Logout
