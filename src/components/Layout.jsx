@@ -40,9 +40,9 @@ const Layout = ({ children }) => {
                                 {link.name}
                             </a>
                         ))}
-                        <button className="bg-finance-gold hover:bg-yellow-400 text-finance-navy px-6 py-2 rounded-full font-bold transition-all transform hover:scale-105 shadow-lg shadow-yellow-500/20">
+                        <a href="#register" className="bg-finance-gold hover:bg-yellow-400 text-finance-navy px-6 py-2 rounded-full font-bold transition-all transform hover:scale-105 shadow-lg shadow-yellow-500/20">
                             Register Now
-                        </button>
+                        </a>
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -72,9 +72,13 @@ const Layout = ({ children }) => {
                                     {link.name}
                                 </a>
                             ))}
-                            <button className="bg-finance-gold text-finance-navy px-8 py-3 rounded-full font-bold text-xl mt-4">
+                            <a
+                                href="#register"
+                                className="bg-finance-gold text-finance-navy px-8 py-3 rounded-full font-bold text-xl mt-4 inline-block"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                            >
                                 Register Now
-                            </button>
+                            </a>
                         </div>
                     </motion.div>
                 )}
