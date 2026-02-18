@@ -163,7 +163,7 @@ const Registration = () => {
             setTimeout(() => setSubmitStatus(null), 3000);
         };
         return (
-            <FormContainer onSubmit={handleSubmit(onSubmit)} isSubmitting={isSubmitting} btnColor="bg-blue-500" btnText="Request Guest Pass">
+            <FormContainer onSubmit={handleSubmit(onSubmit)} isSubmitting={isSubmitting} btnColor="bg-blue-500" btnText="Register for Sessions">
                 <div className="grid md:grid-cols-2 gap-4">
                     <InputField label="Full Name" name="fullName" register={register} rules={{ required: "Required" }} error={errors.fullName} />
                     <InputField label="Email Address" name="email" type="email" register={register} rules={{ required: "Required" }} error={errors.email} />
@@ -198,7 +198,7 @@ const Registration = () => {
     const tabs = [
         { id: 'entry', label: 'Student', icon: <User size={18} />, color: 'bg-finance-gold', text: 'Apply for the full-day student experience.' },
         { id: 'competition', label: 'Team', icon: <Users size={18} />, color: 'bg-finance-emerald', text: 'Register your squad for the case showdown.' },
-        { id: 'guest', label: 'Guest', icon: <Briefcase size={18} />, color: 'bg-blue-500', text: 'Join us as an industry professional.' },
+        { id: 'guest', label: 'Speaker Session', icon: <Briefcase size={18} />, color: 'bg-blue-500', text: 'Attend expert talks and panel discussions.' },
     ];
 
     return (
@@ -278,7 +278,7 @@ const Registration = () => {
                                 <h3 className="text-2xl font-bold text-white mb-1">
                                     {activeTab === 'entry' && 'Student Application'}
                                     {activeTab === 'competition' && 'Team Registration'}
-                                    {activeTab === 'guest' && 'Guest Access'}
+                                    {activeTab === 'guest' && 'Speaker Session Registration'}
                                 </h3>
                                 <p className="text-gray-400 text-sm">Please fill in your details accurately.</p>
                             </div>
