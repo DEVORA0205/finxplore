@@ -73,12 +73,12 @@ const Registration = () => {
         return (
             <FormContainer onSubmit={handleSubmit(onSubmit)} isSubmitting={isSubmitting}>
                 <div className="grid md:grid-cols-2 gap-4">
-                    <InputField label="Full Name" name="fullName" register={register} rules={{ required: "Required" }} error={errors.fullName} placeholder="John Doe" />
-                    <InputField label="Email Address" name="email" type="email" register={register} rules={{ required: "Required" }} error={errors.email} placeholder="john@example.com" />
+                    <InputField label="Full Name" name="fullName" register={register} rules={{ required: "Required" }} error={errors.fullName} placeholder="Kabir Thapar" />
+                    <InputField label="Email Address" name="email" type="email" register={register} rules={{ required: "Required" }} error={errors.email} placeholder="kabir@finxplore.com" />
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-4">
-                    <InputField label="Mobile No." name="mobile" type="tel" register={register} rules={{ required: "Required", pattern: { value: /^[0-9]{10}$/, message: "Invalid Phone" } }} error={errors.mobile} placeholder="9876543210" />
+                    <InputField label="Mobile No." name="mobile" type="tel" register={register} rules={{ required: "Required", pattern: { value: /^[0-9]{10}$/, message: "Invalid Phone" } }} error={errors.mobile} placeholder="98765 43210" />
                     <SelectField
                         label="Standard"
                         name="standard"
@@ -89,18 +89,18 @@ const Registration = () => {
                     />
                 </div>
 
-                <InputField label="School Name" name="school" register={register} rules={{ required: "Required" }} error={errors.school} placeholder="e.g. DPS, St. Xavier's" />
+                <InputField label="School Name" name="school" register={register} rules={{ required: "Required" }} error={errors.school} placeholder="e.g. Dhirubhai Ambani Int. School" />
 
                 {/* Optional Parent Details */}
                 <div className="mt-6 border-t border-white/10 pt-4">
                     <h4 className="text-finance-gold text-xs font-bold uppercase tracking-widest mb-4">Parent Details (Optional)</h4>
                     <div className="grid md:grid-cols-2 gap-4">
-                        <InputField label="Father's Name" name="parent1Name" register={register} rules={{ required: false }} error={errors.parent1Name} placeholder="Father's Name" />
-                        <InputField label="Father's Contact" name="parent1Contact" type="tel" register={register} rules={{ required: false }} error={errors.parent1Contact} placeholder="Mobile No." />
+                        <InputField label="Father's Name" name="parent1Name" register={register} rules={{ required: false }} error={errors.parent1Name} placeholder="Raj Thapar" />
+                        <InputField label="Father's Contact" name="parent1Contact" type="tel" register={register} rules={{ required: false }} error={errors.parent1Contact} placeholder="98765 43210" />
                     </div>
                     <div className="grid md:grid-cols-2 gap-4">
-                        <InputField label="Mother's Name" name="parent2Name" register={register} rules={{ required: false }} error={errors.parent2Name} placeholder="Mother's Name" />
-                        <InputField label="Mother's Contact" name="parent2Contact" type="tel" register={register} rules={{ required: false }} error={errors.parent2Contact} placeholder="Mobile No." />
+                        <InputField label="Mother's Name" name="parent2Name" register={register} rules={{ required: false }} error={errors.parent2Name} placeholder="Naina Thapar" />
+                        <InputField label="Mother's Contact" name="parent2Contact" type="tel" register={register} rules={{ required: false }} error={errors.parent2Contact} placeholder="98765 43210" />
                     </div>
                 </div>
             </FormContainer>
@@ -116,15 +116,15 @@ const Registration = () => {
         };
         return (
             <FormContainer onSubmit={handleSubmit(onSubmit)} isSubmitting={isSubmitting} btnColor="bg-finance-emerald" btnText="Register Your Team">
-                <InputField label="Team Name" name="teamName" register={register} rules={{ required: "Required" }} error={errors.teamName} placeholder="The Wolves of Wall St." />
+                <InputField label="Team Name" name="teamName" register={register} rules={{ required: "Required" }} error={errors.teamName} placeholder="The Big Shorts" />
 
                 <h4 className="text-finance-emerald text-xs font-bold uppercase tracking-widest mb-4 mt-4">Leader Details</h4>
                 <div className="grid md:grid-cols-2 gap-4">
-                    <InputField label="Leader Name" name="leaderName" register={register} rules={{ required: "Required" }} error={errors.leaderName} placeholder="Team Captain" />
-                    <InputField label="Leader Email" name="leaderEmail" type="email" register={register} rules={{ required: "Required" }} error={errors.leaderEmail} placeholder="captain@team.com" />
+                    <InputField label="Leader Name" name="leaderName" register={register} rules={{ required: "Required" }} error={errors.leaderName} placeholder="Harvey Specter" />
+                    <InputField label="Leader Email" name="leaderEmail" type="email" register={register} rules={{ required: "Required" }} error={errors.leaderEmail} placeholder="harvey@pearson.com" />
                 </div>
                 <div className="grid md:grid-cols-2 gap-4">
-                    <InputField label="Mobile No." name="leaderMobile" type="tel" register={register} rules={{ required: "Required", pattern: { value: /^[0-9]{10}$/, message: "Invalid Phone" } }} error={errors.leaderMobile} placeholder="9876543210" />
+                    <InputField label="Mobile No." name="leaderMobile" type="tel" register={register} rules={{ required: "Required", pattern: { value: /^[0-9]{10}$/, message: "Invalid Phone" } }} error={errors.leaderMobile} placeholder="98765 43210" />
                     <SelectField
                         label="Standard"
                         name="leaderStandard"
@@ -135,14 +135,14 @@ const Registration = () => {
                     />
                 </div>
 
-                <InputField label="School Name" name="leaderSchool" register={register} rules={{ required: "Required" }} error={errors.leaderSchool} placeholder="e.g. DPS, St. Xavier's" />
+                <InputField label="School Name" name="leaderSchool" register={register} rules={{ required: "Required" }} error={errors.leaderSchool} placeholder="e.g. The Doon School" />
 
                 {/* Optional Parent Details */}
                 <div className="mt-6 border-t border-white/10 pt-4">
                     <h4 className="text-finance-emerald text-xs font-bold uppercase tracking-widest mb-4">Parent Details (Optional)</h4>
                     <div className="grid md:grid-cols-2 gap-4">
-                        <InputField label="Father's Name" name="parent1Name" register={register} rules={{ required: false }} error={errors.parent1Name} placeholder="Father's Name" />
-                        <InputField label="Father's Contact" name="parent1Contact" type="tel" register={register} rules={{ required: false }} error={errors.parent1Contact} placeholder="Mobile No." />
+                        <InputField label="Father's Name" name="parent1Name" register={register} rules={{ required: false }} error={errors.parent1Name} placeholder="Gordon Specter" />
+                        <InputField label="Father's Contact" name="parent1Contact" type="tel" register={register} rules={{ required: false }} error={errors.parent1Contact} placeholder="98765 43210" />
                     </div>
                 </div>
 
@@ -165,12 +165,12 @@ const Registration = () => {
         return (
             <FormContainer onSubmit={handleSubmit(onSubmit)} isSubmitting={isSubmitting} btnColor="bg-blue-500" btnText="Register for Sessions">
                 <div className="grid md:grid-cols-2 gap-4">
-                    <InputField label="Full Name" name="fullName" register={register} rules={{ required: "Required" }} error={errors.fullName} />
-                    <InputField label="Email Address" name="email" type="email" register={register} rules={{ required: "Required" }} error={errors.email} />
+                    <InputField label="Full Name" name="fullName" register={register} rules={{ required: "Required" }} error={errors.fullName} placeholder="Rakesh Jhunjhunwala" />
+                    <InputField label="Email Address" name="email" type="email" register={register} rules={{ required: "Required" }} error={errors.email} placeholder="bull@market.com" />
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-4">
-                    <InputField label="Mobile No." name="mobile" type="tel" register={register} rules={{ required: "Required", pattern: { value: /^[0-9]{10}$/, message: "Invalid Phone" } }} error={errors.mobile} placeholder="9876543210" />
+                    <InputField label="Mobile No." name="mobile" type="tel" register={register} rules={{ required: "Required", pattern: { value: /^[0-9]{10}$/, message: "Invalid Phone" } }} error={errors.mobile} placeholder="98765 43210" />
                     <SelectField
                         label="Standard"
                         name="standard"
@@ -181,14 +181,14 @@ const Registration = () => {
                     />
                 </div>
 
-                <InputField label="School Name" name="school" register={register} rules={{ required: "Required" }} error={errors.school} placeholder="e.g. DPS, St. Xavier's" />
+                <InputField label="School Name" name="school" register={register} rules={{ required: "Required" }} error={errors.school} placeholder="e.g. Mayo College" />
 
                 {/* Optional Parent Details */}
                 <div className="mt-6 border-t border-white/10 pt-4">
                     <h4 className="text-blue-400 text-xs font-bold uppercase tracking-widest mb-4">Parent Details (Optional)</h4>
                     <div className="grid md:grid-cols-2 gap-4">
                         <InputField label="Father's Name" name="parent1Name" register={register} rules={{ required: false }} error={errors.parent1Name} placeholder="Father's Name" />
-                        <InputField label="Father's Contact" name="parent1Contact" type="tel" register={register} rules={{ required: false }} error={errors.parent1Contact} placeholder="Mobile No." />
+                        <InputField label="Father's Contact" name="parent1Contact" type="tel" register={register} rules={{ required: false }} error={errors.parent1Contact} placeholder="98765 43210" />
                     </div>
                 </div>
             </FormContainer>
